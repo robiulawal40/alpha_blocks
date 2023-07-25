@@ -4,7 +4,7 @@
  * @wordpress-plugin
  * Plugin Name:       Alpha Blocks
  * Plugin URI:        https://github.com/robiulawal40/
- * Description:       This plugin will make basecamp project based on woocommerce orders.
+ * Description:       This plugin will create bunch of blocks in your wordpress website.
  * Version:           1.0.0
  * Author:            Robiul Awal
  * Author URI:        https://github.com/robiulawal40/
