@@ -12,7 +12,8 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start"
+		"start": "wp-scripts start",
+        "git":"git add . && git commit -m \"regular update\" && git push origin main"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^26.9.0"
