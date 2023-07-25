@@ -1,0 +1,28 @@
+{
+    "name": "Alpha Blocks",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+    },
+    "nodemonConfig": {
+        "link": "https://github.com/remy/nodemon/blob/master/doc/sample-nodemon.md",
+        "watch": [
+            "classes/*",
+            "*.php",
+            "*.js",
+            "*.json"
+        ],
+        "ext": "js, css, php, json",
+        "ignore": [
+            "puppeteer/download",
+            "test/user_data"
+        ]
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^8.17.0"
+    }
+}

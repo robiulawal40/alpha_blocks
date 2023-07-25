@@ -1,0 +1,33 @@
+{
+    "name":"Re runner Actions",
+    "actions":[
+        {
+            "url":"https://dev-metsprongenvooruit.pantheonsite.io/dashboard-1-html/",
+            "css":{
+                "key":"my_key",
+                "path":"./assets/style.css"
+            },
+            "js":{
+                "key":"ccop-scripts-js",
+                "path":"./assets/scripts.js"
+            },
+            "clear_consol":"yes",
+            "action":"reload_assets",
+            "available action":"reload reload_assets "
+        },
+        {
+            "url":"http://localhost/",
+            "css":{
+                "key":"my_css",
+                "path":"./assets/style.css"
+            },
+            "js":{
+                "key":"my_key",
+                "path":"./assets/test.js"
+            },
+            "clear_consol":"yes",
+            "action":"reload_assets",
+            "available action":"reload reload_assets "
+        }
+    ]
+}
