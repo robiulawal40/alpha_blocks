@@ -31,8 +31,11 @@ import './editor.scss';
  */
 export default function Edit() {
 	return (
-		<p { ...useBlockProps() }>
+		<div { ...useBlockProps() }>
+			<div>
+				<h4>Hello Accordion</h4> 
+				</div>
 			{ __( 'Starter Block – hello from the editor!', 'starter-block' ) }
-		</p>
+		</div>
 	);
 }
