@@ -1,7 +1,8 @@
 {
     "cSpell.words": [
-        "CCOP",
-        "CFEW"
+      "alpb",
+      "CCOP",
+      "CFEW"
     ],
     "[php]": {
         "editor.formatOnSave": true,

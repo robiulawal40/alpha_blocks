@@ -1,16 +1,29 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/starter-block",
+	"name": "alpb/info-box",
 	"version": "0.1.0",
-	"title": "Starter Block",
+	"title": "Info Box",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "The Info Box will create.....",
+	"attributes": {
+		"content": {
+				"type": "string",
+				"source": "html",
+				"selector": "p"
+		},
+		"alignment": {
+				"type": "string",
+				"default": "none"
+		},
+		"bg_color": { "type": "string", "default": "#000000" },
+		"text_color": { "type": "string", "default": "#ffffff" }
+	},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "starter-block",
+	"textdomain": "info-box",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

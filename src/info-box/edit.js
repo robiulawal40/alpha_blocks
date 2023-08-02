@@ -11,7 +11,13 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, 
+    RichText,
+    AlignmentToolbar,
+    BlockControls ,
+    ColorPalette,
+    InspectorControls
+} from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,27 +35,228 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+import { Button } from '@wordpress/components';
+
+export default function Edit({ attributes, setAttributes }) {
+
+    const onChangeContent = ( newContent ) => {
+        setAttributes( { content: newContent } );
+    };
+
+    const onChangeAlignment = ( newAlignment ) => {
+        setAttributes( {
+            alignment: newAlignment === undefined ? 'none' : newAlignment,
+        } );
+    };
+
+    const onChangeBGColor = ( hexColor ) => {
+        setAttributes( { bg_color: hexColor } );
+    };
+
+    const onChangeTextColor = ( hexColor ) => {
+        setAttributes( { text_color: hexColor } );
+    };
+
 	return (
 		<div { ...useBlockProps() }>
-			<div>
-					<div class="bg-gray-100">
-            <div class="container mx-auto">
+
+                <InspectorControls key="setting">
+                    <div id="gutenpride-controls">
+                        <fieldset>
+                            <legend className="blocks-base-control__label">
+                                { __( 'Background color', 'gutenpride' ) }
+                            </legend>
+                            <ColorPalette 
+                                value={ attributes.bg_color }
+                                onChange={ onChangeBGColor }
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <legend className="blocks-base-control__label">
+                                { __( 'Text color', 'gutenpride' ) }
+                            </legend>
+                            <ColorPalette 
+                                  value={ attributes.text_color }
+                                onChange={ onChangeTextColor }
+                            />
+                        </fieldset>
+                    </div>
+                </InspectorControls>
+
+                {
+                    <BlockControls>
+                        <AlignmentToolbar
+                            value={ attributes.alignment }
+                            onChange={ onChangeAlignment }
+                        />
+                    </BlockControls>
+                }
+                <RichText
+                    className={ attributes.className }
+                    style={ { textAlign: attributes.alignment } }
+                    tagName="p"
+                    onChange={ onChangeContent }
+                    value={ attributes.content }
+                />            
+
+                {/* <Button variant="primary">Click me!</Button> */}
+
+        <div class="bg-gray-100">
+            <div class="container mx-auto text-black ">
                 <div role="article" class="bg-gray-100 py-12 md:px-8">
-                    <div class="px-4 xl:px-0 py-10">
-                        <div class="flex flex-col lg:flex-row flex-wrap">
-                            <div class="mt-4 lg:mt-0 lg:w-3/5">
-                                <div>
-                                    <h1 class="text-3xl ml-2 lg:ml-0 lg:text-4xl font-bold text-gray-900 tracking-normal lg:w-11/12">Frequently asked questions</h1>
+                    <div class="px-6 xl:px-0">
+                        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pb-6 gap-8">
+                            <div role="cell" class="bg-gray-100">
+                                <div class="relative bg-white p-5 rounded-md relative h-full w-full text-center">
+                                    <span><img class="bg-gray-200 p-2 mb-5 rounded-full ml-auto mr-auto " src="https://i.ibb.co/HFC1hqn/people-1.png" alt="home-1" /></span>
+                                    <h1 class="pb-4 text-2xl font-semibold">Profile Preferences</h1>
+                                    <div class="my-5">
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">First time, what do I do next?</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">Changing you profile picture and other information</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">I didnt get a confirmation email, what should I do next</h4>
+                                        </div>
+                                    </div>
+                                    <a class="hover:text-indigo-500 hover:underline absolute bottom-5 text-sm text-indigo-700 font-bold cursor-pointer flex items-center" href="javascript:void(0)">
+                                        <p>Show All</p>
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#4338CA" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <line x1="5" y1="12" x2="19" y2="12" />
+                                                <line x1="15" y1="16" x2="19" y2="12" />
+                                                <line x1="15" y1="8" x2="19" y2="12" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div role="cell" class="bg-gray-100">
+                                <div class="relative bg-white p-5 rounded-md relative h-full w-full">
+                                    <span><img class="bg-gray-200 p-2 mb-5 rounded-full" src="https://i.ibb.co/QX80fYm/lock-closed-1.png" alt="home-1" /></span>
+                                    <h1 class="pb-4 text-2xl font-semibold">Privacy and Cookies</h1>
+                                    <div class="my-5">
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">First time, what do I do next?</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">Changing you profile picture and other information</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">I didnt get a confirmation email, what should I do next</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">What is the refund policy if I have to cancel during the month</h4>
+                                        </div>
+                                    </div>
+                                    <a class="hover:text-indigo-500 hover:underline absolute bottom-5 text-sm text-indigo-700 font-bold cursor-pointer flex items-center" href="javascript:void(0)">
+                                        <p>Show All</p>
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#4338CA" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <line x1="5" y1="12" x2="19" y2="12" />
+                                                <line x1="15" y1="16" x2="19" y2="12" />
+                                                <line x1="15" y1="8" x2="19" y2="12" />
+                                            </svg>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div role="cell" class="bg-gray-100">
+                                <div class="relative bg-white p-5 rounded-md relative h-full w-full">
+                                    <span><img class="bg-gray-200 p-2 mb-5 rounded-full" src="https://i.ibb.co/QX80fYm/lock-closed-1.png" alt="home-1" /></span>
+                                    <h1 class="pb-4 text-2xl font-semibold">Privacy and Cookies</h1>
+                                    <div class="my-5">
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">First time, what do I do next?</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">Changing you profile picture and other information</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">I didnt get a confirmation email, what should I do next</h4>
+                                        </div>
+                                        <div class="flex items-center pb-4 dark:border-gray-700 cursor-pointer w-full">
+                                            <div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12.5" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                            <h4 class="text-md text-gray-900 dark:text-gray-100 pl-4">What is the refund policy if I have to cancel during the month</h4>
+                                        </div>
+                                    </div>
+                                    <a class="hover:text-indigo-500 hover:underline absolute bottom-5 text-sm text-indigo-700 font-bold cursor-pointer flex items-center" href="javascript:void(0)">
+                                        <p>Show All</p>
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#4338CA" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <line x1="5" y1="12" x2="19" y2="12" />
+                                                <line x1="15" y1="16" x2="19" y2="12" />
+                                                <line x1="15" y1="8" x2="19" y2="12" />
+                                            </svg>
+                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-				</div>
-				</div>
-			{ __( 'Starter Block – hello from the editor!', 'starter-block' ) }
+	
 		</div>
 	);
 }
