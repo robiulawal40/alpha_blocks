@@ -7,6 +7,7 @@
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "The Info Box will create.....",
+	
 	"attributes": {
 		"content": {
 				"type": "string",
@@ -21,7 +22,8 @@
 		"text_color": { "type": "string", "default": "#ffffff" }
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": [ "left", "right", "full" ]
 	},
 	"textdomain": "info-box",
 	"editorScript": "file:./index.js",
