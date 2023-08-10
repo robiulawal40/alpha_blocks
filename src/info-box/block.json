@@ -25,7 +25,7 @@
 		"html": false,
 		"align": [ "left", "right", "full" ]
 	},
-	"textdomain": "info-box",
+	"textdomain": "alpha-blocks",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
