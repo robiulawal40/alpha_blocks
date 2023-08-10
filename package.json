@@ -1,8 +1,8 @@
 {
-	"name": "starter-block",
+	"name": "alpha-blocks",
 	"version": "0.1.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "A multi-purpose gutenberg block plugin for WordPress editor.",
+	"author": "Robiul Awal",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
@@ -21,7 +21,7 @@
 		"start": "npm-run-all --parallel wpstart tailwindwatch",
 		"tailwindbuild": "tailwindcss -i ./src/info-box/tailwind.css -o ./build/info-box/tailwind-index.css --postcss --minify",
 		"tailwindwatch": "tailwindcss -i ./src/style.css -o ./assets/style.css --watch --postcss --minify",
-		"git": "git add . && git commit -m \"regular update\" && git push origin main"
+		"git": "git add . && git commit -m \"regular update\" && git push origin muhibullah"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^26.9.0",
