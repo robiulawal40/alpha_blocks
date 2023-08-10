@@ -9,6 +9,23 @@
 	"description": "The Info Box will create.....",
 	
 	"attributes": {
+		"contents":{
+			"type":"string",
+			"source": "html",
+			"selector": ".text-content"
+		},
+		"title":{
+			"type":"string",
+			"selector": "h1",
+			"default":"Info Title"
+		},
+		"titleClass":{
+			"type":"string",
+			"default":"pb-4 text-2xl font-semibold text-center"
+		},
+		"list":{
+			"type":"array"
+		},
 		"content": {
 				"type": "string",
 				"source": "html",
