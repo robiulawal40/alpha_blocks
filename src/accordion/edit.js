@@ -33,8 +33,8 @@ export default function Edit() {
 	return (
 		<div { ...useBlockProps() }>
 			<div>
-				<h4>Hello Accordion</h4> 
-				</div>
+				<h4>Hello Accordion</h4>
+			</div>
 			{ __( 'Starter Block – hello from the editor!', 'starter-block' ) }
 		</div>
 	);
