@@ -13,6 +13,8 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
+		"wp-env": "wp-env start",
+		"dev": "npm-run-all --sequential \"wp-env start\" preview",
 		"preview": "npm-run-all --parallel sync wpstart",
 		"sync:old": "browser-sync start -p 'http://localhost:8888/?page_id=2' --files '**/*.php' './src/**/*' './assets'",
 		"sync": "browser-sync start --config bs-config.js",
