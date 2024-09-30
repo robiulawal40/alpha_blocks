@@ -7,129 +7,41 @@
  * Description:       This plugin will create bunch of blocks in your WordPress website.
  * Version:           1.0.0
  * Author:            Robiul Awal
- * Author URI:        https://github.com/robiulawal40/
+ * Author URI:        https://www.linkedin.com/company/wp-codezen
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       alpb
+ * Text Domain:       alpha
  * Domain Path:       /languages
  */
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-if ( ! class_exists( 'Alpha_Blocks_Final' ) ) :
+if ( ! defined( 'ALPHA_PLUGIN_FILE' ) ) {
+	define( 'ALPHA_PLUGIN_FILE', __FILE__ );
+}
 
-	final class Alpha_Blocks_Final {
+// Include the main Alpha_Blocks_Final class.
+if ( ! class_exists( 'Alpha_Blocks_Final', false ) ) {
+	include_once dirname( ALPHA_PLUGIN_FILE ) . '/includes/class-alpha-blocks.php';
+}
 
-		/*
-		 * @var mixed
-		 */
-		private static $instance;
-
-		/*
-		 * instance functions
-		 */
-		public static function instance() {
-			if ( is_null( self::$instance ) ) {
-				self::$instance = new Alpha_Blocks_Final();
-			}
-			return self::$instance;
-		}
-
-		/*
-		 * Cloning is forbidden.
-		 */
-		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'nvce' ), '1.0' );
-		}
-
-		/*
-		 * Unserializing instances of this class is forbidden.
-		 */
-		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'nvce' ), '1.0' );
-		}
-
-		/*
-		 * Plugin constructor
-		 */
-		function __construct() {
-			$this->text_domain = 'ALPB';
-			$this->set_constants();
-			$this->includes();
-		}
-
-		/*
-		 * Setting the plugin  constant
-		 */
-		public function set_constants() {
-
-			if ( ! defined( 'ALPB_VERSION' ) ) {
-				define( 'ALPB_VERSION', '1.0.0' );
-			}
-			if ( ! defined( 'ALPB_DOMAIN' ) ) {
-				define( 'ALPB_DOMAIN', 'alpb' );
-			}
-			if ( ! defined( 'ALPB_NAME' ) ) {
-				define( 'ALPB_NAME', 'Wc orders to Basecamp' );
-			}
-			if ( ! defined( 'ALPBDIR' ) ) {
-				define( 'ALPBDIR', plugin_dir_path( __FILE__ ) );
-			}
-			if ( ! defined( 'ALPBBASENAME' ) ) {
-				define( 'ALPBBASENAME', plugin_basename( __FILE__ ) );
-			}
-			if ( ! defined( 'ALPBURL' ) ) {
-				define( 'ALPBURL', plugin_dir_url( __FILE__ ) );
-			}
-			if ( ! defined( 'ALPBDEV' ) ) {
-				define( 'ALPBDEV', true );
-			}
-			if ( ! defined( 'ALPB_IMAGES' ) ) {
-				define( 'ALPB_IMAGES', '_ALPB_att' );
-			}
-
-		}
-
-		/*
-		 * Plugin include files
-		 */
-		public function includes() {
-
-			require_once ALPBDIR . 'functions.php';
-
-			spl_autoload_register(
-				function( $class_name ) {
-
-					if ( false !== strpos( $class_name, $this->text_domain ) ) {
-
-						$classes_dir = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR;
-
-						$class_file = strtolower( str_replace( $this->text_domain . '_', '', $class_name ) ) . '.php';
-						require_once $classes_dir . $class_file;
-					}
-
-				}
-			);
-			  require_once ALPBDIR . 'init.php';
-		}
-
-
-	}
-endif;
-
-function ALPB_init() {
+/**
+ * Initialization of the plugin.
+ *
+ * @return object
+ */
+function Alpha_init() {
 	return Alpha_Blocks_Final::instance();
 }
-add_action( 'plugins_loaded', 'ALPB_init' );
+
+$GLOBALS['alpha_blocks'] = Alpha_init();
+
+new Alpha_I18n();
 
 
-
-function create_block_starter_block_block_init() {
+function alpha_blocks_register_blocks() {
 	register_block_type( __DIR__ . '/build/info-box' );
-	register_block_type( __DIR__ . '/build/accordion' );
-	register_block_type( __DIR__ . '/build/icon' );
 }
-add_action( 'init', 'create_block_starter_block_block_init' );
+add_action( 'init', 'alpha_blocks_register_blocks' );

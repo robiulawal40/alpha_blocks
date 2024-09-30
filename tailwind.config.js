@@ -1,3 +1,3 @@
 module.exports = {
-  content: ["./**/*.php", "./src/**/*.js"],
+  content: [ "./src/**/*.js", "./src/**/*.html"], //"./**/*.php",
 }
