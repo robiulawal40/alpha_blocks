@@ -5,7 +5,7 @@
  * Plugin Name:       Alpha Blocks
  * Plugin URI:        https://github.com/robiulawal40/
  * Description:       This plugin will create bunch of blocks in your WordPress website.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Robiul Awal
  * Author URI:        https://www.linkedin.com/company/wp-codezen
  * License:           GPL-2.0+

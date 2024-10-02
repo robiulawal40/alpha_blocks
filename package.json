@@ -36,9 +36,10 @@
     "packages-update": "wp-scripts packages-update",
     "plugin-zip": "wp-scripts plugin-zip",
     "git": "git add . && git commit -m \"regular update\" && git push origin main",
+    "git:pull": "git pull origin main",
     "svn": "node svn.js",
     "wp": "cd .. && cd .. && wp-env start",
-    "pot": "wp i18n make-pot C:/xampp/htdocs/wp-content/plugins/alpha_blocks C:/xampp/htdocs/wp-content/plugins/alpha_blocks/languages/alpha.pot --domain=alpha"
+    "pot": "wp i18n make-pot C:/xampp/htdocs/wp-content/plugins/alpha_blocks C:/xampp/htdocs/wp-content/plugins/alpha_blocks/languages/alpha.pot --domain=alpha-blocks"
   },
   "devDependencies": {
     "@wordpress/scripts": "^27.4.0",

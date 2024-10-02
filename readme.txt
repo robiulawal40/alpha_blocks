@@ -20,7 +20,7 @@ Seamlessly integrated into the Gutenberg editor, Alpha Blocks becomes a natural 
 
 <strong>WANT TO CONTRIBUTE TO THE PLUGIN? 🙋</strong>
 
-You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/wp-spectra" target="_blank" rel="">Alpha Blocks on Github</a>
+You may now contribute to the plugin on Github: <a href="https://github.com/robiulawal40/alpha_blocks" target="_blank" rel="">Alpha Blocks on Github</a>
 
 === Key Features ===
 
@@ -81,3 +81,6 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 = 1.0.0 =
 * Initial Release
+
+= 1.0.1 =
+* Text Domain Updated

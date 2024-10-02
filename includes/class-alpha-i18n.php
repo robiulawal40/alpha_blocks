@@ -27,7 +27,7 @@ if ( ! class_exists( 'Alpha_I18n' ) ) :
 		 */
 		public function load_plugin_textdomain() {
 			load_plugin_textdomain(
-				'alpha',
+				'alpha-blocks',
 				false,
 				dirname( plugin_basename( __FILE__ ), 2 ) . '/languages/'
 			);
