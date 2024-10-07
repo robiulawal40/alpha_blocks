@@ -29,6 +29,7 @@ if ( ! class_exists( 'Alpha_Blocks_Final', false ) ) {
 
 /**
  * Initialization of the plugin.
+ * Branch Gutenberg
  *
  * @return object
  */
