@@ -1,6 +1,0 @@
-[submodule "html-templates"]
-	path = html-templates
-	url = ../html
-[submodule "template/html"]
-	path = template/html
-	url = ../html
