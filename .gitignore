@@ -11,5 +11,5 @@
 **/test/**
 **/dump/**
 .tmp*
-.svn/**
+**/.svn/**
 !.gitignore
