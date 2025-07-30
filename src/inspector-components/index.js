@@ -1,1 +1,0 @@
-export { default as InspectorTabs } from './inspector-tabs';
