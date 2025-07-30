@@ -1,0 +1,2 @@
+- Add a Hero section Block,
+- Create a Hero HTML

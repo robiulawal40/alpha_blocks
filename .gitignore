@@ -10,4 +10,7 @@
 **/node_modules/**
 **/test/**
 **/dump/**
+.tmp*
+**/.svn/**
+/alpha-blocks/**
 !.gitignore
