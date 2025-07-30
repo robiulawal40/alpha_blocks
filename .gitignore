@@ -12,4 +12,5 @@
 **/dump/**
 .tmp*
 **/.svn/**
+/alpha-blocks
 !.gitignore
