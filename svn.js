@@ -6,17 +6,34 @@ const { exec } = require("child_process");
 // Playground https://tastewp.org/plugins/alpha_blocks
 
 
-const REPO_URL = 'https://plugins.svn.wordpress.org/alpha_blocks';
-const CHECKOUT_DIR ='./alpha_blocks';
-const TRUNK = ["alpha_blocks.php", "readme.txt", "admin","assets","inc", "templates/assets", "templates/tailwind-style.css", "templates/style-3.php", "templates/style-4.php","templates/style-5.php"];
+const REPO_URL = 'https://plugins.svn.wordpress.org/alpha-blocks/';
+const CHECKOUT_DIR ='./alpha-blocks';
+const TRUNK = ["alpha-blocks.php", "readme.txt", "admin-assets", "includes", "class", "build", "src/html/assets"];
 const VERSION ="1.4.0";
+const EclFileFolderExt = ['.git', ];
+const EclFileFolderName = ['package.json'];
+
+const filterFunc = (src, dest) => {
+  // Exclude the .git directory
+  const ext = path.extname(src);
+  const name = path.basename(src);
+  if (path.basename(src) === '.git' ||  EclFileFolderExt.includes(ext) ||  EclFileFolderName.includes(name)) {
+    return false;
+  }
+  return true; // Include all other files and directories
+};
 
 function updateFolder(files, desFolders='trunk'){
 
   try {
     for (let index = 0; index < files.length; index++) {
       const fileFolder = files[index];
-      fse.copySync(fileFolder, path.join(CHECKOUT_DIR, desFolders, fileFolder));      
+      // const ext = path.extname(fileFolder);
+      // if (EclFileFolder.includes(ext) || ){
+      //   return 
+      // }
+
+      fse.copySync(fileFolder, path.join(CHECKOUT_DIR, desFolders, fileFolder), { filter: filterFunc });      
     }
 
   } catch (error) {
@@ -27,15 +44,15 @@ function updateFolder(files, desFolders='trunk'){
 updateFolder(TRUNK);
 updateFolder(TRUNK, "tags/"+VERSION);
 
-// svn commit -m "Fixed bug in login module"
-exec(`cd ${CHECKOUT_DIR} && svn commit -m "New Style 4 and Style 5 Added"`, (error, stdout, stderr) => {
-  if (error) {
-    console.log(`error: ${error.message}`);
-    return;
-  }
-  if (stderr) {
-    console.log(`stderr: ${stderr}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-});
+
+// exec(`cd ${CHECKOUT_DIR} && svn commit -m "Just init"`, (error, stdout, stderr) => {
+//   if (error) {
+//     console.log(`error: ${error.message}`);
+//     return;
+//   }
+//   if (stderr) {
+//     console.log(`stderr: ${stderr}`);
+//     return;
+//   }
+//   console.log(`stdout: ${stdout}`);
+// });

@@ -1,3 +1,10 @@
-/* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-starter-block block)' );
-/* eslint-enable no-console */
+/**
+ * WordPress dependencies
+ */
+import { store } from '@wordpress/interactivity';
+
+store( 'accordion', {
+	state: {},
+	actions: {},
+	callbacks: {},
+} );

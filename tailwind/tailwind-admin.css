@@ -1,0 +1,108 @@
+@source "../src/accordion/inspector.js";
+@source "../src/inspector-components";
+/* .alpha-settings { */
+/* @tailwind base;
+  @tailwind components;
+  @tailwind utilities; */
+
+@import "tailwindcss";
+
+@layer components {
+  .alpha-settings .components-toggle-control {
+    width: 100%;
+  }
+  .alpha-settings
+    .components-toggle-control
+    .components-base-control__field
+    .components-flex {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .alpha-settings .components-base-control__label,
+  .alpha-settings .components-input-control__label {
+    text-transform: capitalize;
+  }
+  .alpha-settings .border-style .components-input-control__label {
+    text-transform: capitalize !important;
+  }
+  .alpha-settings .components-button.is-secondary,
+  .alpha-settings .components-button.is-secondary:hover {
+    box-shadow: inset 0 0 0 1px #cde9f9;
+  }
+  .alpha-settings .components-button.is-primary,
+  .alpha-settings .components-button.is-primary:focus {
+    color: #007cba;
+    background-color: #dcf2ff;
+    border-color: #cde9f9;
+    box-shadow: inset 0 0 0 1px #cde9f9;
+  }
+  .alpha-settings .alpha-main-tab {
+    margin-left: -16px;
+  }
+  .alpha-settings .components-tab-panel__tabs {
+    justify-content: space-between;
+  }
+  .alpha-settings .components-tab-panel__tabs-item {
+    flex-grow: 1;
+    padding: 30px 0px !important;
+    box-shadow: 0px 0px 2px #e1e1e1 !important;
+    border-bottom: 4px solid transparent !important;
+  }
+  .alpha-settings .components-tab-panel__tabs-item.active-tab {
+    box-shadow: 0px 0px 2px #e1e1e1 !important;
+    border-bottom-color: var(
+      --wp-components-color-accent,
+      var(--wp-admin-theme-color, #3858e9)
+    ) !important;
+    color: var(
+      --wp-components-color-accent,
+      var(--wp-admin-theme-color, #3858e9)
+    ) !important;
+  }
+  .alpha-settings .components-tab-panel__tabs-item.active-tab-panel {
+    box-shadow: 0px 0px 2px #e1e1e1;
+    border-bottom-color: var(
+      --wp-components-color-accent,
+      var(--wp-admin-theme-color, #e1e1e1)
+    ) !important;
+    color: var(
+      --wp-components-color-accent,
+      var(--wp-admin-theme-color, #3858e9)
+    ) !important;
+  }
+  .alpha-settings .toggle-checkbox:checked {
+    @apply: right-0 border-green-400;
+    right: 0;
+    border-color: rgb(20 184 166 / 1);
+  }
+  .alpha-settings .unit-select {
+    width: 40px;
+    margin-top: -8px;
+  }
+  .alpha-settings .unit-select button {
+    padding-left: 2px;
+  }
+  .alpha-settings .unit-select .components-input-control__backdrop {
+    border-width: 0px !important;
+    box-shadow: 0px 0px 2px #e1e1e1;
+  }
+  .alpha-settings .unit-select .components-input-control__suffix {
+    border-width: 0px;
+  }
+}
+
+.alpha-settings
+  .components-panel__body.is-opened
+  > .components-panel__body-title {
+  margin: -16px -16px 18px;
+  border-bottom: 3px solid #cbcbcb;
+}
+.alpha-settings .components-panel__body-toggle.components-button:focus {
+  box-shadow: none;
+}
+.alpha-settings .components-button:focus:not(:disabled) {
+  outline: none;
+}
+/* } */

@@ -1,0 +1,81 @@
+<?php
+
+if ( ! class_exists( 'ALPHA_enqueue_scripts' ) ) :
+
+	class ALPHA_enqueue_scripts {
+
+		public $internalDir = 'gutenberg-extra/';
+		/*
+		 * Plugin constructor
+		 */
+		function __construct() {
+			add_action( 'init', array( $this, 'register_scripts' ) );
+			add_action( 'enqueue_block_assets', array( $this, 'alpha_external_frontend_scripts' ) );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'alpha_external_scripts' ) );
+		}
+
+		function alpha_external_scripts() {
+				wp_enqueue_style(
+					'admin-css',
+					plugins_url( $this->internalDir . 'build/admin-dashboard.css', ALPHA_PLUGIN_FILE ),
+					array(),
+					filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'build/admin-dashboard.css' )
+				);
+				wp_enqueue_style(
+					'tailwind-admin-css',
+					plugins_url( $this->internalDir . 'src/tailwind-admin-build.css', ALPHA_PLUGIN_FILE ),
+					array(),
+					filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'src/tailwind-admin-build.css' )
+				);
+				wp_enqueue_style(
+					'tailwind-frontend-css',
+					plugins_url( $this->internalDir . 'src/tailwind-frontend-build.css', ALPHA_PLUGIN_FILE ),
+					array(),
+					filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'src/tailwind-frontend-build.css' )
+				);
+		}
+
+		public function alpha_external_frontend_scripts() {
+			wp_enqueue_style(
+				'tailwind-frontend-css',
+				plugins_url( $this->internalDir . 'src/tailwind-frontend-build.css', ALPHA_PLUGIN_FILE ),
+				array(),
+				filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'src/tailwind-frontend-build.css' )
+			);
+		}
+
+		public function register_scripts() {
+
+			wp_register_style(
+				'alpha-block-tailwind-style',
+				plugins_url( $this->internalDir . 'assets/style-frontend.css', ALPHA_PLUGIN_FILE ),
+				array(),
+				filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'assets/style-frontend.css' )
+			);
+			wp_register_script(
+				'alpha-alpine-collapse',
+				plugins_url( $this->internalDir . 'assets/style-frontend.css', ALPHA_PLUGIN_FILE ),
+				array(),
+				filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'assets/collapse.js' ),
+				true
+			);
+
+			wp_register_script(
+				'alpine-init',
+				plugins_url( $this->internalDir . 'assets/init.js', ALPHA_PLUGIN_FILE ),
+				array(),
+				filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'assets/init.js' ),
+				true
+			);
+
+			wp_register_script(
+				'alpine',
+				plugins_url( $this->internalDir . 'assets/alpine.js', ALPHA_PLUGIN_FILE ),
+				array( 'alpha-alpine-collapse', 'alpine-init' ),
+				filemtime( plugin_dir_path( ALPHA_PLUGIN_FILE ) . $this->internalDir . 'assets/alpine.js' ),
+				true
+			);
+		}
+	}
+
+endif;

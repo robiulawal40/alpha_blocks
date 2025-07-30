@@ -1,24 +1,43 @@
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
 
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {WPElement} Element to render.
- */
-export default function save() {
+
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import Style from './Accordion/Style';
+
+export default function Save(props) {
+
+		const {
+		attributes,
+		setAttributes,
+		className,
+		isSelected,
+		onReplace,
+		mergeBlocks,
+		clientId,
+		context,
+	} = props;
+
+		const style = {
+		'--accordion-padding-y': '20px',
+		'--accordion-padding-x': '20px',
+		'--accordion-space-y':'0px',
+};
+// const blockProps = useBlockProps.save( {  id:'alpha-block-' + Math.random().toString(36).substring(2, 8), style: style });
+const blockProps = useBlockProps.save( {  id:'alpha-block-45', style: style });
+
+console.log("blockProps: ", blockProps);
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Starter Block – hello from the saved content!' }
-		</p>
+		<div  { ...blockProps }  >		
+				<div className="alpha-accordions-wrapper">
+					<Style attributes={attributes} wrapperId={blockProps?.id}/>
+					<div
+					x-data="accordions"
+					className={`alpha-accordions-2`}
+					data-attributes={JSON.stringify(attributes)}
+				>
+					<InnerBlocks.Content />
+				</div>
+			</div>
+		</div>
 	);
 }

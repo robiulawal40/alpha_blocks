@@ -1,26 +1,15 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
+
 import { __ } from '@wordpress/i18n';
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
-
+import { useBlockProps, RichText, InnerBlocks } from '@wordpress/block-editor';
+// import './editor.scss';
+import Inspector from './inspector';
+import Accordion from './Accordion';
+import { attributesToJSON } from '../functions';
+import { useRef, useEffect, useState } from '@wordpress/element'
+import {Button} from '@wordpress/components'
+import { useSelect } from '@wordpress/data';
+import HeroWrapper from '../html/src/hero/HeroWrapper';
+import Accordion2 from '../html/src/accordion/Accordion';
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -29,13 +18,54 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit(props) {
+	const {
+		attributes,
+		setAttributes,
+		className,
+		isSelected,
+		onReplace,
+		mergeBlocks,
+		clientId,
+		context,
+	} = props;
+
+	const style = {
+		'--accordion-padding-y': '20px',
+		'--accordion-padding-x': '20px',
+		'--accordion-space-y':'0px',
+};
+const blockProps = useBlockProps( { style: style } );
+const contentRef = useRef(null);
+
+
+useEffect(()=>{
+	if(contentRef.current && Alpine){	
+		if( typeof Alpine?.$data(contentRef.current)?.updateAttributes === 'function'){
+			Alpine?.$data(contentRef.current)?.updateAttributes(attributes);			
+		}else{	
+		}
+	}
+}, [attributes]);
+
+	// const isSelectedOrChildSelected = useSelect((select) => {
+	// 		const { isBlockSelected, hasSelectedInnerBlock } =
+	// 				select('core/block-editor');
+	// 		return (
+	// 				isBlockSelected(clientId) ||
+	// 				hasSelectedInnerBlock(clientId, true) 
+	// 		);
+	// }, [clientId]);
+
 	return (
-		<div { ...useBlockProps() }>
-			<div>
-				<h4>Hello Accordion</h4> 
-				</div>
-			{ __( 'Starter Block – hello from the editor!', 'starter-block' ) }
+		<div  { ...useBlockProps({ className:"alpha-blocks" }) }  >		
+		
+			{isSelected && <Inspector {...props} />}
+
+			<div className="alpha-accordions-wrapper">						
+				<Accordion2 attributes={attributes} setAttributes={setAttributes} style={blockProps?.style} wrapperId = {blockProps?.id} contentRef={contentRef} clientId={clientId}/>
+			</div>
+			{/* {attributesToJSON(attributes)} */}
 		</div>
 	);
 }

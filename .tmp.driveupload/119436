@@ -1,0 +1,407 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "alphablock/accordion",
+  "version": "1.2.3",
+  "title": "Accordion",
+  "category": "widgets",
+  "icon": "editor-insertmore",
+  "attributes": {
+    "activeIcon": {
+      "type": "object",
+      "default": {
+        "iconName": "chevronRightSmall"
+      }
+    },
+    "answerPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "15",
+          "borderRight": "15",
+          "borderBottom": "15",
+          "borderLeft": "15",
+          "unit": "px"
+        }
+      }
+    },
+    "answerTextColor": {
+      "type": "object",
+      "default": {
+        "type": "color",
+        "gradient": "linear-gradient(to bottom, #B1C5A4 0%, #F9F9F9 100%)",
+        "color": "#636363"
+      }
+    },
+    "answerTypography": {
+      "type": "object",
+      "default": {
+        "fontFamily": "default",
+        "fontSize": {
+          "desktop": {
+            "val": 16,
+            "unit": "px"
+          }
+        },
+        "fontWeight": false,
+        "fontStyle": false,
+        "fontTransform": false,
+        "fontDecoration": "default",
+        "fontLineHeight": {
+          "desktop": {
+            "unit": "px",
+            "val": 24
+          }
+        },
+        "fontLetterSpacing": {
+          "desktop": {
+            "unit": "px",
+            "val": 0
+          }
+        }
+      }
+    },
+    "changeBackgroundBorderOnHover": {
+      "type": "boolean",
+      "default": false
+    },
+    "collapseOtherItems": {
+      "type": "boolean",
+      "default": true
+    },
+    "containerHoverBackground": {
+      "type": "object",
+      "default": {
+        "type": "gradient",
+        "gradient": "linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)",
+        "color": "#f00"
+      }
+    },
+    "containerHoverBorder": {
+      "type": "object",
+      "default": {
+        "color": "#333",
+        "style": "solid",
+        "width": "2px"
+      }
+    },
+    "containerHoverBorderColor": {
+      "type": "object",
+      "default": {
+        "type": "gradient",
+        "gradient": "linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)"
+      }
+    },
+    "containerHoverBorderWidth": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "2",
+          "borderRight": "2",
+          "borderBottom": "2",
+          "borderLeft": "2",
+          "unit": "px"
+        }
+      }
+    },
+    "containerHoverNormalBorderStyle": {
+      "type": "string",
+      "default": "solid"
+    },
+    "containerHoverRowsGap": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "val": 5,
+          "unit": "px"
+        }
+      }
+    },
+    "containerNormalBackground": {
+      "type": "object",
+      "default": {
+        "type": "color",
+        "gradient": "linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)",
+        "color": "#b5bdbc"
+      }
+    },
+    "containerNormalBorder": {
+      "type": "object",
+      "default": {
+        "width": "18px"
+      }
+    },
+    "containerNormalBorderColor": {
+      "type": "object",
+      "default": {
+        "type": "gradient",
+        "gradient": "linear-gradient(to bottom, #D8613C 0%, #F9F9F9 100%)"
+      }
+    },
+    "containerNormalBorderRadius": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "2",
+          "borderRight": "2",
+          "borderBottom": "2",
+          "borderLeft": "2",
+          "unit": "px"
+        }
+      }
+    },
+    "containerNormalBorderStyle": {
+      "type": "string",
+      "default": "ridge"
+    },
+    "containerNormalBorderWidth": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "4",
+          "borderRight": "4",
+          "borderBottom": "4",
+          "borderLeft": "4",
+          "unit": "px"
+        },
+        "tablet": {
+          "borderTop": "8",
+          "borderRight": "8",
+          "borderBottom": "8",
+          "borderLeft": "8",
+          "unit": "em"
+        }
+      }
+    },
+    "containerNormalRowsGap": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "val": 5,
+          "unit": "px"
+        },
+        "tablet": {
+          "val": 32,
+          "unit": "em"
+        }
+      }
+    },
+    "enableSchemaSupport": {
+      "type": "boolean",
+      "default": true
+    },
+    "enableSeparator": {
+      "type": "boolean",
+      "default": true
+    },
+    "enableToggle": {
+      "type": "boolean",
+      "default": true
+    },
+    "expandFirstItem": {
+      "type": "boolean",
+      "default": true
+    },
+    "gapIconQuestion": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "val": 6,
+          "unit": "px"
+        }
+      }
+    },
+    "iconActiveColor": {
+      "type": "object",
+      "default": {
+        "type": "gradient",
+        "gradient": "linear-gradient(to bottom, #B1C5A4 0%, #F9F9F9 100%)"
+      }
+    },
+    "iconAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "iconBackgroundColor": {
+      "type": "object",
+      "default": {
+        "type": "color",
+        "gradient": "linear-gradient(to bottom, #B5BDBC 0%, #F9F9F9 100%)",
+        "color": "#b5bdbc"
+      }
+    },
+    "iconBorder": {
+      "type": "object",
+      "default": {
+        "style": "none",
+        "width": "0px"
+      }
+    },
+    "iconBorderStyle": {
+      "type": "string",
+      "default": "solid"
+    },
+    "iconBorderWidth": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "2",
+          "borderRight": "2",
+          "borderBottom": "2",
+          "borderLeft": "2",
+          "unit": "px"
+        }
+      }
+    },
+    "iconColor": {
+      "type": "object",
+      "default": {
+        "type": "color",
+        "gradient": "linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)",
+        "color": "#636363"
+      }
+    },
+    "iconPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "val": "2",
+          "unit": "px"
+        }
+      }
+    },
+    "iconRadius": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": 0,
+          "borderRight": 0,
+          "borderBottom": 0,
+          "borderLeft": 0,
+          "unit": "px"
+        }
+      }
+    },
+    "iconSize": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "val": 30,
+          "unit": "px"
+        }
+      }
+    },
+    "inactiveIcon": {
+      "type": "object",
+      "default": {
+        "iconName": "chevronUp"
+      }
+    },
+    "presets": {
+      "type": "string",
+      "default": "two"
+    },
+    "questionBackground": {
+      "type": "object",
+      "default": {
+        "type": "color",
+        "gradient": "linear-gradient(to bottom, #B1C5A4 0%, #F9F9F9 100%)",
+        "color": "#b5bdbc"
+      }
+    },
+    "questionPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "7",
+          "borderRight": "7",
+          "borderBottom": "7",
+          "borderLeft": "7",
+          "unit": "px"
+        }
+      }
+    },
+    "questionTag": {
+      "type": "string",
+      "default": "h4"
+    },
+    "questionTextColor": {
+      "type": "object",
+      "default": {
+        "type": "gradient",
+        "gradient": "linear-gradient(to bottom, #B1C5A4 0%, #F9F9F9 100%)"
+      }
+    },
+    "questionTypography": {
+      "type": "object",
+      "default": {
+        "fontFamily": "Alike Angular",
+        "fontSize": {
+          "desktop": {
+            "val": 18,
+            "unit": "px"
+          }
+        },
+        "fontWeight": "100",
+        "fontStyle": "normal",
+        "fontTransform": "Uppercase",
+        "fontDecoration": "None",
+        "fontLineHeight": {
+          "desktop": {
+            "unit": "px",
+            "val": 29
+          }
+        },
+        "fontLetterSpacing": {
+          "desktop": {
+            "unit": "px"
+          }
+        }
+      }
+    },
+    "spacingMargin": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "0",
+          "borderRight": "0",
+          "borderBottom": "0",
+          "borderLeft": "0",
+          "unit": "px"
+        }
+      }
+    },
+    "spacingPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "borderTop": "10",
+          "borderRight": "10",
+          "borderBottom": "10",
+          "borderLeft": "10",
+          "unit": "px"
+        }
+      }
+    },
+    "zIndex": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "val": "2",
+          "unit": "px"
+        }
+      }
+    }
+  },
+  "supports": {
+    "customClassName": false,
+    "__experimentalGroup": {
+      "advanced": false
+    }
+  },
+  "textdomain": "my-example-template-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "script": "alpine",
+  "style": "alpha-block-tailwind-style"
+}

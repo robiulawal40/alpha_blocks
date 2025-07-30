@@ -1,18 +1,15 @@
-[submodule "html"]
-	path = html
-	url = ../html
 [submodule "class"]
 	path = class
 	url = ../class
 [submodule "formatter"]
 	path = formatter
 	url = ../formatter
-[submodule "svn-file-folder-management-others"]
-	path = svn-file-folder-management-others
-	url = ../svn-file-folder-management-others
 [submodule "gutenberg-extra"]
 	path = gutenberg-extra
 	url = ../gutenberg-extra
 [submodule "admin-setting"]
 	path = admin-setting
 	url = ../admin-setting
+[submodule "src/html"]
+	path = src/html
+	url = ../html

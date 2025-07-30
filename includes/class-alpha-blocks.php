@@ -52,7 +52,7 @@ if ( ! class_exists( 'Alpha_Blocks_Final' ) ) :
 		 */
 		function __construct() {
 
-			$this->text_domain = 'Alpha';
+			$this->text_domain = 'ALPHA';
 			$this->set_constants();
 			$this->includes();
 		}
@@ -72,13 +72,13 @@ if ( ! class_exists( 'Alpha_Blocks_Final' ) ) :
 				define( 'ALPHA_NAME', 'Alpha Blocks' );
 			}
 			if ( ! defined( 'ALPHADIR' ) ) {
-				define( 'ALPHADIR', plugin_dir_path( __FILE__ ) );
+				define( 'ALPHADIR', plugin_dir_path( ALPHA_PLUGIN_FILE ) );
 			}
 			if ( ! defined( 'ALPHABASENAME' ) ) {
-				define( 'ALPHABASENAME', plugin_basename( __FILE__ ) );
+				define( 'ALPHABASENAME', plugin_basename( ALPHA_PLUGIN_FILE ) );
 			}
 			if ( ! defined( 'ALPHAURL' ) ) {
-				define( 'ALPHAURL', plugin_dir_url( __FILE__ ) );
+				define( 'ALPHAURL', plugin_dir_url( ALPHA_PLUGIN_FILE ) );
 			}
 			if ( ! defined( 'ALPHADEV' ) ) {
 				define( 'ALPHADEV', true );
@@ -100,9 +100,10 @@ if ( ! class_exists( 'Alpha_Blocks_Final' ) ) :
 
 					if ( false !== strpos( $class_name, $this->text_domain ) ) {
 
-						$classes_dir = realpath( plugin_dir_path( ALPHA_PLUGIN_FILE ) ) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
+						$classes_dir = realpath( plugin_dir_path( ALPHA_PLUGIN_FILE ) ) . DIRECTORY_SEPARATOR . 'class' . DIRECTORY_SEPARATOR;
 
-						$class_file = str_replace( '_', '-', strtolower( 'class-' . $class_name ) ) . '.php';
+						$class_file = strtolower( str_replace( $this->text_domain . '_', '', $class_name ) ) . '.php';
+
 						require_once $classes_dir . $class_file;
 					}
 				}
