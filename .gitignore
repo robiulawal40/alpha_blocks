@@ -10,4 +10,5 @@
 **/node_modules/**
 **/test/**
 **/dump/**
+.tmp*
 !.gitignore
